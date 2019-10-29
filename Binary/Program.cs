@@ -14,13 +14,13 @@ namespace Binary
 
         static void Main(string[] args)
         {
-            Console.WriteLine(Question1a);
-            Console.WriteLine(Question1b);
-            Console.WriteLine(Question1c);
+            Console.WriteLine(GetRightMostSetBit(4));
+            //Console.WriteLine(Question1b);
+            //Console.WriteLine(Question1c);
             Console.ReadKey();
         }
 
-        bool IsLeftMostBitSet(uint value)
+        static bool IsLeftMostBitSet(uint value)
         {
             if ((value & 0x32) == 0x32)
             {
@@ -31,7 +31,7 @@ namespace Binary
             }
         }
 
-        bool IsRightMostBitSet(uint value)
+        static bool IsRightMostBitSet(uint value)
         {
             if ((value & 0x01) == 0x01)
             {
@@ -42,7 +42,7 @@ namespace Binary
             }
         }
 
-        bool IsBitSet(int value, char bit_to_check)
+        static bool IsBitSet(int value, char bit_to_check)
         {
             if((value & bit_to_check) == bit_to_check)
             {
@@ -55,19 +55,36 @@ namespace Binary
 
         }
 
-        int GetRightMostSetBit(int value)
+        static int GetRightMostSetBit(int value)
         {
             if ((value & 0x01) == 0x01)
-            {
+                return 0;
+
+            if ((value & 0x02) == 0x02)
                 return 1;
-            }
-            else
-            {
-                return -1;
-            }
+
+            if ((value & 0x04) == 0x04)
+                return 2;
+
+            if ((value & 0x08) == 0x08)
+                return 3;
+
+            if ((value & 0x10) == 0x10)
+                return 4;
+
+            if ((value & 0x20) == 0x20)
+                return 5;
+
+            if ((value & 0x40) == 0x40)
+                return 6;
+
+            if ((value & 0x80) == 0x80)
+                return 7;
+
+            return -1;
         }
 
-        public void PrintInventory(byte value)
+        static public void PrintInventory(byte value)
         {
             if ((value & 0x01) == 0x01)
                 Console.Write(value);
