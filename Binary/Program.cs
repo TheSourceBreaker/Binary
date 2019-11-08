@@ -8,15 +8,15 @@ namespace Binary
 {
     class Program
     {
-        const byte Question1a = 0x10 >> 1;
-        const byte Question1b = 0x15 << 1;
-        const byte Question1c = 0x01 << 4;
 
         static void Main(string[] args)
         {
-            Console.WriteLine(GetRightMostSetBit(4));
-            //Console.WriteLine(Question1b);
-            //Console.WriteLine(Question1c);
+            Console.WriteLine(IsLeftMostBitSet(0x32));
+            Console.WriteLine(IsRightMostBitSet(0x01));
+            Console.WriteLine(IsBitSet(0x16, 0x01 << 4));
+            Console.WriteLine(GetRightMostSetBit(0x01));
+            PrintInventory(0x43);
+            
             Console.ReadKey();
         }
 
@@ -42,7 +42,7 @@ namespace Binary
             }
         }
 
-        static bool IsBitSet(int value, char bit_to_check)
+        static bool IsBitSet(uint value, byte bit_to_check)
         {
             if((value & bit_to_check) == bit_to_check)
             {
@@ -55,61 +55,77 @@ namespace Binary
 
         }
 
-        static int GetRightMostSetBit(int value)
+        static int GetRightMostSetBit(uint value)
         {
             if ((value & 0x01) == 0x01)
                 return 0;
 
-            if ((value & 0x02) == 0x02)
+            else if ((value & 0x01 << 1) == 0x01 << 1)
                 return 1;
 
-            if ((value & 0x04) == 0x04)
+            else if ((value & 0x01 << 2) == 0x01 << 2)
                 return 2;
 
-            if ((value & 0x08) == 0x08)
+            else if ((value & 0x01 << 3) == 0x01 << 3)
                 return 3;
 
-            if ((value & 0x10) == 0x10)
+            else if ((value & 0x01 << 4) == 0x01 << 4)
                 return 4;
 
-            if ((value & 0x20) == 0x20)
+            else if ((value & 0x01 << 5) == 0x01 << 5)
                 return 5;
 
-            if ((value & 0x40) == 0x40)
+            else if ((value & 0x01 << 6) == 0x01 << 6)
                 return 6;
 
-            if ((value & 0x80) == 0x80)
+            else if ((value & 0x01 << 7) == 0x01 << 7)
                 return 7;
 
             return -1;
         }
 
-        static public void PrintInventory(byte value)
+        
+        static void PrintInventory(byte value)
         {
             if ((value & 0x01) == 0x01)
-                Console.Write(value);
-
-            if ((value & 0x01 << 1) == 0x01 << 1)
-                Console.Write(value);
-
-            if ((value & 0x01 << 2) == 0x01 << 2)
-                Console.Write(value);
-
-            if ((value & 0x01 << 3) == 0x01 << 3)
-                Console.Write(value);
-
-            if ((value & 0x01 << 4) == 0x01 << 4)
-                Console.Write(value);
-
-            if ((value & 0x01 << 5) == 0x01 << 5)
-                Console.Write(value);
-
-            if ((value & 0x01 << 6) == 0x01 << 6)
-                Console.Write(value);
+                Console.Write("1");
+            else
+                Console.Write(0);
 
             if ((value & 0x01 << 7) == 0x01 << 7)
-                Console.Write(value);
+                Console.Write("1");
+            else
+                Console.Write(0);
 
+            if ((value & 0x01 << 6) == 0x01 << 6)
+                Console.Write("1");
+            else
+                Console.Write(0);
+
+            if ((value & 0x01 << 5) == 0x01 << 5)
+                Console.Write("1");
+            else
+                Console.Write(0);
+
+            if ((value & 0x01 << 4) == 0x01 << 4)
+                Console.Write("1");
+            else
+                Console.Write(0);
+
+            if ((value & 0x01 << 3) == 0x01 << 3)
+                Console.Write("1");
+            else
+                Console.Write(0);
+
+            if ((value & 0x01 << 2) == 0x01 << 2)
+                Console.Write("1");
+            else
+                Console.Write(0);
+
+            if ((value & 0x01 << 1) == 0x01 << 1)
+                Console.Write("1");
+            else
+                Console.Write(0);
         }
 
 
